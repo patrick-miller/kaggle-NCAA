@@ -1,4 +1,4 @@
-ProjectEuler-pmiller
+kaggle-NCAA
 ====================
 
-Project Euler code
+NCAA March Madness Competition
