@@ -1,0 +1,329 @@
+Name,TOPG
+Texas,9.4
+UMBC,9.5
+Butler,10.3
+Washington St.,10.3
+South Carolina,10.5
+UNLV,10.6
+Siena,11.1
+West Virginia,11.1
+Houston,11.2
+Delaware St.,11.3
+Northwestern,11.4
+Drake,11.7
+Towson,11.8
+UNI,11.8
+Fresno St.,11.8
+George Mason,12
+DePaul,12
+IUPUI,12.1
+Wisconsin,12.1
+New Orleans,12.1
+Ball St.,12.2
+Arizona,12.2
+Pittsburgh,12.2
+Memphis,12.2
+New Mexico,12.2
+Davidson,12.2
+Stanford,12.3
+Seton Hall,12.3
+Miami (OH),12.3
+Montana,12.3
+UCLA,12.4
+Stephen F. Austin,12.4
+Saint Louis,12.4
+Loyola Chicago,12.4
+Citadel,12.4
+Wright St.,12.5
+Wofford,12.6
+Oregon St.,12.6
+Florida,12.6
+Penn St.,12.6
+Detroit,12.6
+Baylor,12.6
+Oregon,12.6
+Air Force,12.7
+Saint Joseph's,12.7
+Austin Peay,12.7
+Akron,12.8
+Temple,12.8
+Texas A&M,12.8
+Milwaukee,12.8
+Arizona St.,12.8
+Utah,12.8
+Tennessee,12.8
+Indiana St.,12.8
+Illinois St.,12.8
+Dayton,12.9
+Michigan,12.9
+Missouri,12.9
+Southern Miss.,12.9
+UC Irvine,12.9
+Louisiana Tech,12.9
+Purdue,12.9
+Oklahoma,12.9
+Eastern Ky.,12.9
+Kansas,12.9
+Notre Dame,13
+Alabama,13
+Ole Miss,13
+Morgan St.,13.1
+Tex.-Pan American,13.1
+Coastal Caro.,13.1
+Winthrop,13.1
+Old Dominion,13.1
+Troy,13.1
+Brown,13.1
+Ill.-Chicago,13.1
+Fordham,13.1
+Valparaiso,13.1
+Oral Roberts,13.2
+Iowa St.,13.2
+Marquette,13.2
+Northeastern,13.2
+Georgetown,13.2
+Samford,13.2
+Louisville,13.3
+LIU Brooklyn,13.3
+Xavier,13.3
+William & Mary,13.3
+Marshall,13.3
+UNC Asheville,13.3
+VCU,13.3
+Ohio St.,13.3
+California,13.4
+Colorado,13.4
+Lehigh,13.4
+Nebraska,13.4
+Miami (FL),13.4
+UTEP,13.4
+Cal Poly,13.4
+Oakland,13.5
+Elon,13.5
+Alabama St.,13.5
+Cal St. Fullerton,13.5
+Green Bay,13.5
+Niagara,13.5
+South Fla.,13.5
+High Point,13.5
+San Diego St.,13.6
+Duke,13.6
+Colorado St.,13.6
+New Hampshire,13.6
+Binghamton,13.6
+UConn,13.6
+American,13.6
+Eastern Wash.,13.6
+Auburn,13.6
+Stony Brook,13.6
+Liberty,13.7
+Illinois,13.7
+Michigan St.,13.7
+IPFW,13.7
+Cornell,13.7
+Cincinnati,13.7
+St. Mary's (CA),13.7
+Indiana,13.7
+Massachusetts,13.7
+Arkansas St.,13.8
+Southern Ill.,13.8
+LSU,13.8
+Columbia,13.8
+UT Martin,13.8
+Evansville,13.9
+South Ala.,13.9
+Delaware,13.9
+Western Ill.,13.9
+Washington,13.9
+UCF,14
+Utah St.,14
+Hawaii,14
+Fairfield,14
+Marist,14
+Col. of Charleston,14
+Creighton,14
+Tennessee St.,14.1
+Rhode Island,14.1
+Nevada,14.1
+Boston U.,14.1
+Fairleigh Dickinson,14.1
+Manhattan,14.1
+Montana St.,14.1
+Virginia,14.1
+UNC Greensboro,14.1
+Western Ky.,14.2
+Cleveland St.,14.2
+Minnesota,14.2
+Gonzaga,14.2
+Ark.-Pine Bluff,14.2
+Villanova,14.2
+Wichita St.,14.2
+Dartmouth,14.3
+UAB,14.3
+St. Bonaventure,14.3
+Albany (NY),14.3
+Eastern Ill.,14.3
+BYU,14.3
+East Carolina,14.3
+TCU,14.3
+Charlotte,14.3
+Idaho St.,14.4
+Mt. St. Mary's,14.4
+UMKC,14.4
+Princeton,14.4
+Monmouth,14.4
+Wake Forest,14.4
+Sacred Heart,14.4
+Ohio,14.4
+UC Santa Barbara,14.4
+Furman,14.4
+Mississippi Val.,14.4
+Ga. Southern,14.4
+Texas Tech,14.5
+Richmond,14.5
+Youngstown St.,14.5
+Middle Tenn.,14.5
+Vanderbilt,14.5
+Rider,14.5
+Providence,14.5
+Murray St.,14.5
+Jacksonville St.,14.6
+Western Mich.,14.6
+Kent St.,14.6
+Central Conn. St.,14.6
+La.-Lafayette,14.6
+Portland St.,14.6
+Missouri St.,14.7
+Belmont,14.7
+Coppin St.,14.7
+North Carolina,14.7
+Denver,14.7
+Bradley,14.7
+Southern California,14.7
+Western Caro.,14.7
+Sacramento St.,14.8
+Charleston So.,14.8
+Oklahoma St.,14.8
+Loyola Maryland,14.8
+Yale,14.9
+Eastern Mich.,14.9
+Tulane,14.9
+Clemson,14.9
+Pacific,14.9
+Georgia,14.9
+Hartford,14.9
+George Washington,15
+Quinnipiac,15
+Georgia St.,15
+San Diego,15
+Florida St.,15
+Virginia Tech,15
+North Texas,15
+Vermont,15
+Bowling Green,15.1
+Morehead St.,15.1
+Saint Francis (PA),15.1
+Appalachian St.,15.2
+Lipscomb,15.2
+Lamar,15.3
+Mississippi St.,15.3
+San Jose St.,15.3
+St. John's (NY),15.3
+Georgia Tech,15.3
+Northern Ariz.,15.3
+Florida A&M,15.3
+UMES,15.3
+Kansas St.,15.3
+Rutgers,15.3
+UNC Wilmington,15.3
+San Francisco,15.4
+UC Davis,15.4
+Boston College,15.5
+Centenary (LA),15.5
+Arkansas,15.5
+Gardner-Webb,15.5
+Norfolk St.,15.5
+Mercer,15.5
+North Carolina St.,15.5
+La.-Monroe,15.5
+UTSA,15.6
+Boise St.,15.6
+Portland,15.6
+Texas Southern,15.7
+Weber St.,15.7
+Wagner,15.7
+Harvard,15.7
+Drexel,15.8
+Iowa,15.8
+Southern U.,15.8
+Bethune-Cookman,15.8
+Idaho,15.8
+Central Mich.,15.8
+Penn,15.8
+Toledo,15.9
+Syracuse,15.9
+Holy Cross,15.9
+Army,15.9
+Kentucky,15.9
+VMI,16
+Cal St. Northridge,16
+New Mexico St.,16
+Tulsa,16.1
+Saint Peter's,16.1
+UC Riverside,16.1
+Bucknell,16.2
+Sam Houston St.,16.2
+Fla. Atlantic,16.2
+Chicago St.,16.2
+Colgate,16.2
+Duquesne,16.2
+SMU,16.2
+La Salle,16.3
+Long Beach St.,16.3
+Canisius,16.3
+St. Francis Brooklyn,16.3
+UALR,16.3
+Santa Clara,16.3
+Southern Utah,16.4
+Hofstra,16.4
+Stetson,16.4
+East Tenn. St.,16.4
+Longwood,16.4
+Navy,16.4
+Jackson St.,16.4
+Alabama A&M,16.6
+Robert Morris,16.6
+Tennessee Tech,16.7
+James Madison,16.7
+Campbell,16.7
+Buffalo,16.8
+Jacksonville,16.8
+Maryland,16.8
+Lafayette,16.9
+Southeastern La.,16.9
+Hampton,17
+Pepperdine,17
+Alcorn,17.2
+Texas-Arlington,17.2
+Wyoming,17.2
+Iona,17.5
+Chattanooga,17.5
+Radford,17.6
+Grambling,17.6
+Nicholls St.,17.6
+N.C. A&T,17.7
+Northern Colo.,17.8
+McNeese St.,17.9
+Southeast Mo. St.,18
+Texas St.,18.1
+South Carolina St.,18.2
+Northern Ill.,18.2
+A&M-Corpus Christi,18.3
+Howard,18.3
+Loyola Marymount,18.4
+FIU,18.5
+Prairie View,18.6
+Maine,18.8
+Rice,18.9
+Northwestern St.,19
+Savannah St.,19.8
