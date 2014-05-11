@@ -1,6 +1,6 @@
-library(caret)
+library("caret")
 
-source("UtilitySources.r")
+source("PWMisc/UtilitySources.r")
 
 FileDir <- "Kaggle/NCAA/data"
 
@@ -74,7 +74,7 @@ algo_preds <- function(){
     is.element(ordinal_weekly_ranks$sys_name, full_rank_systems), ]
   
   
-  #Convert to a rating system (TODO: ENHANCE)
+  #Convert to a rating system
   ordinal_weekly_ratings <- ordinal_weekly_ranks
   ordinal_weekly_ratings$rating <- rank_to_rating(ordinal_weekly_ratings$orank)
   
@@ -182,29 +182,8 @@ algo_preds <- function(){
                       
   #Sample models
   
-  # All systems - GLM
-#   all_systems <- c("WLK", "SAG", "RTH", "DOL", "SAGP", "POM", "SE", "BOB", "WOL", "MOR",
-#                    "COL", "RPI", "DUN")
-#   
-#   model_all_glm <- train(x=dat_train[, all_systems, drop=FALSE],
-#                           y=dat_train$outcome,
-#                           method="glm",
-#                           family=binomial(link="logit"),
-#                           trControl=tr_control,
-#                           metric="logloss",
-#                           maximize=FALSE)
-#   
-#   preds_all_glm <- data.frame(dat_test[, 1:col_info], predicted=
-#                               predict(model_all_glm, newdata=dat_test[, all_systems, drop=FALSE]))
-#   evaluation_all_glm <- preds_all_glm[ , c("outcome", "predicted")]
-#   names(evaluation_all_glm) <- c("obs", "pred")
-#   loglossprob_summary(evaluation_all_glm)
-#   
-#   # All systems - GBM
-#   all_systems <- c("WLK", "SAG", "RTH", "DOL", "SAGP", "POM", "SE", "BOB", "WOL", "MOR",
-#                    "COL", "RPI", "DUN")
 
-  grid_cv <- data.frame(interaction.depth=2, n.trees=seq(1000,7000,1000), shrinkage=.001)
+  grid_cv <- data.frame(interaction.depth=2, n.trees=seq(1000,7000,10000), shrinkage=.001)
 
   model_all_gbm <- train(x=dat_train[, -c(1:col_info), drop=FALSE],
                          y=dat_train$outcome,
@@ -544,15 +523,6 @@ manipulate_preds <- function(){
   write.csv(preds_2, paste0(FileDir, "/submissions/preds_2_ ", Sys.Date(), ".csv"),
             row.names=FALSE)
 }
-
-
-
-id1 = teams$id[teams$name=="Oklahoma St"]
-id2 = teams$id[teams$name=="Gonzaga"]
-
-preds[preds$team1==id1 | preds$team2==id1, ]
-id2
-
 
 
 cleanStatisticsData <- function(){
