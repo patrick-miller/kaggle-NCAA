@@ -1,10 +1,21 @@
+# setwd("Kaggle/NCAA/R")
+
+library("dplyr")
 library("caret")
+library("gbm")
 
-source("PWMisc/UtilitySources.r")
+source("../../../PWMisc/R/UtilitySources.r")
+source("../../../PWMisc/R/Graphics.r")
 
-FileDir <- "Kaggle/NCAA/data"
+FileDir <- "../data"
 
-algo_preds <- function(){
+###############################################################################
+#
+# algo_preds()-
+#
+###############################################################################
+
+algo_preds <- function(FileDir="../data"){
   
   start_day <- 133
   first_season <- "H"
@@ -38,6 +49,7 @@ algo_preds <- function(){
   tourney_results <- read.csv(paste0(FileDir, "/tourney_results.csv"))
   
   yearly_statistics <- read.csv(paste0(FileDir, "/yearly_statisics.csv"))
+  
   #
   #Create the response dataframe
   #
@@ -107,7 +119,6 @@ algo_preds <- function(){
   features_lst <- create_features(tourney_response, ratings_df, tourney_seeds, yearly_statistics)
   prediction_df <- features_lst$prediction_df
   ratings_spread <- features_lst$ratings_spread
-  
   
   #
   #
@@ -220,112 +231,112 @@ algo_preds <- function(){
   #
   #Submissions and error analysis
   #
-  browser()
-
-  features_lst_test <- create_features(submissions_df, ratings_df, tourney_seeds)
-  prediction_df_subm <- features_lst_test$prediction_df
+#   browser()
+# 
+#   features_lst_test <- create_features(submissions_df, ratings_df, tourney_seeds, yearly_statistics)
+#   prediction_df_subm <- features_lst_test$prediction_df
+#   
+#   
+#   preds_all_gbm_subm <- data.frame(id=prediction_df_subm$id, pred=
+#     predict(model_all_gbm, newdata=prediction_df_subm[, all_systems, drop=FALSE]))
+#   
+#   seeds_subm <- data.frame(id=prediction_df_subm$id, pred=prediction_df_subm$SEED)
+#   
+#   
+#   #Local scoring
+#   seeds_subm_test <- na.omit(data.frame(
+#                               id=tourney_response$id,
+#                               obs=tourney_response$outcome,
+#                               pred=seeds_subm$pred[match(tourney_response$id,
+#                                                    seeds_subm$id)]))
+#   
+#   preds_top5_glm_subm_test <- na.omit(data.frame(
+#                               id=tourney_response$id,
+#                               obs=tourney_response$outcome,
+#                               pred=preds_top5_glm_subm$pred[match(tourney_response$id,
+#                                                             preds_top5_glm_subm$id)]))
+#   
+#   #Weighting more multiple models
+#   combine_preds <- function(lst, wghts){
+#     return(Reduce("+", Map("*", lapply(lst, function(x) x$pred), wghts)))
+#   }
+#   
+#   #Weighted Top 5 and Seeds
+#   wghts <- c(.875, .125)
+#   combined_subm_test <- data.frame(preds_top5_glm_subm_test[, -3], pred=
+#       combine_preds(lst=list(preds_top5_glm_subm_test, seeds_subm_test), wghts=wghts))
+#   
+#   #Weighted Combined and 0.5 for games that are hard to predict
+#   combined_subm_close_games_test <- combined_subm_test
+#   combined_subm_close_games_test$pred[abs(combined_subm_close_games_test$pred - .5) < .08] <- .5
+#   
+#   print("Seeds score")
+#   print(loglossprob_summary(seeds_subm_test))
+#   
+#   print("Top 5 score")
+#   print(loglossprob_summary(preds_top5_glm_subm_test))
+#   
+#   print("Combined score")
+#   print(loglossprob_summary(combined_subm_test))
+#   
+#   print("Combined score with close games")
+#   print(loglossprob_summary(combined_subm_close_games_test))
+#   
+#   #Error analysis
+#   
+#   seeds_errors <- logloss_share(seeds_subm_test)
+#   seeds_errors <- seeds_errors[, c("id", "logloss", "loglossshare")]
+#   names(seeds_errors) <- c("id", "logloss_seeds", "loglossshare_seeds")
+#   top5_errors <- logloss_share(combined_subm_close_games_test)
+#   
+#   error_df <- merge(prediction_df_subm, top5_errors, by="id", all=FALSE)
+#   error_df <- merge(error_df[, -5], seeds_errors, by="id", all=FALSE)
+#   
+#   error_df <- error_df[order(error_df$logloss), ]
+#   
+#   error_df$logloss_buckets <- cut(error_df$logloss, 20)
+#   error_df$correct <- ifelse(round(error_df$pred)==error_df$obs, TRUE, FALSE)
+#   error_df$pred_buckets <- cut(abs(.5 - error_df$pred), 10)
+#   error_df$pred_buckets_seed <- cut(abs(.5 - error_df$SEED), 10)
+#   
+#   error_buckets <- dcast(
+#     ddply(error_df, c("correct", "pred_buckets"), summarize,
+#           total_share=sum(loglossshare)),
+#     pred_buckets ~ correct, value.var="total_share"
+#   )
+#   
+#   error_buckets_count <- dcast(
+#     ddply(error_df, c("correct", "pred_buckets"), summarize,
+#           total_share=length(loglossshare)),
+#     pred_buckets ~ correct, value.var="total_share"
+#   )
+#   
+#   error_buckets_seed <- dcast(
+#     ddply(error_df, c("correct", "pred_buckets_seed"), summarize,
+#           total_share=sum(loglossshare)),
+#     pred_buckets_seed ~ correct, value.var="total_share"
+#   )
+#   
+#   error_buckets_count_seed <- dcast(
+#     ddply(error_df, c("correct", "pred_buckets_seed"), summarize,
+#           total_share=length(loglossshare)),
+#     pred_buckets_seed ~ correct, value.var="total_share"
+#   )
+#   
+#   print("Error buckets")
+#   print(error_buckets)
+#   print("Error buckets count")
+#   print(error_buckets_count)
+#   
+#   print("Error buckets - seed")
+#   print(error_buckets_seed)
+#   print("Error buckets count - seed")
+#   print(error_buckets_count_seed)
   
-  
-  preds_all_gbm_subm <- data.frame(id=prediction_df_subm$id, pred=
-    predict(model_all_gbm, newdata=prediction_df_subm[, all_systems, drop=FALSE]))
-  
-  seeds_subm <- data.frame(id=prediction_df_subm$id, pred=prediction_df_subm$SEED)
-  
-  
-  #Local scoring
-  seeds_subm_test <- na.omit(data.frame(
-                              id=tourney_response$id,
-                              obs=tourney_response$outcome,
-                              pred=seeds_subm$pred[match(tourney_response$id,
-                                                   seeds_subm$id)]))
-  
-  preds_top5_glm_subm_test <- na.omit(data.frame(
-                              id=tourney_response$id,
-                              obs=tourney_response$outcome,
-                              pred=preds_top5_glm_subm$pred[match(tourney_response$id,
-                                                            preds_top5_glm_subm$id)]))
-  
-  #Weighting more multiple models
-  combine_preds <- function(lst, wghts){
-    return(Reduce("+", Map("*", lapply(lst, function(x) x$pred), wghts)))
-  }
-  
-  #Weighted Top 5 and Seeds
-  wghts <- c(.875, .125)
-  combined_subm_test <- data.frame(preds_top5_glm_subm_test[, -3], pred=
-      combine_preds(lst=list(preds_top5_glm_subm_test, seeds_subm_test), wghts=wghts))
-  
-  #Weighted Combined and 0.5 for games that are hard to predict
-  combined_subm_close_games_test <- combined_subm_test
-  combined_subm_close_games_test$pred[abs(combined_subm_close_games_test$pred - .5) < .08] <- .5
-  
-  print("Seeds score")
-  print(loglossprob_summary(seeds_subm_test))
-  
-  print("Top 5 score")
-  print(loglossprob_summary(preds_top5_glm_subm_test))
-  
-  print("Combined score")
-  print(loglossprob_summary(combined_subm_test))
-  
-  print("Combined score with close games")
-  print(loglossprob_summary(combined_subm_close_games_test))
-  
-  #Error analysis
-  
-  seeds_errors <- logloss_share(seeds_subm_test)
-  seeds_errors <- seeds_errors[, c("id", "logloss", "loglossshare")]
-  names(seeds_errors) <- c("id", "logloss_seeds", "loglossshare_seeds")
-  top5_errors <- logloss_share(combined_subm_close_games_test)
-  
-  error_df <- merge(prediction_df_subm, top5_errors, by="id", all=FALSE)
-  error_df <- merge(error_df[, -5], seeds_errors, by="id", all=FALSE)
-  
-  error_df <- error_df[order(error_df$logloss), ]
-  
-  error_df$logloss_buckets <- cut(error_df$logloss, 20)
-  error_df$correct <- ifelse(round(error_df$pred)==error_df$obs, TRUE, FALSE)
-  error_df$pred_buckets <- cut(abs(.5 - error_df$pred), 10)
-  error_df$pred_buckets_seed <- cut(abs(.5 - error_df$SEED), 10)
-  
-  error_buckets <- dcast(
-    ddply(error_df, c("correct", "pred_buckets"), summarize,
-          total_share=sum(loglossshare)),
-    pred_buckets ~ correct, value.var="total_share"
-  )
-  
-  error_buckets_count <- dcast(
-    ddply(error_df, c("correct", "pred_buckets"), summarize,
-          total_share=length(loglossshare)),
-    pred_buckets ~ correct, value.var="total_share"
-  )
-  
-  error_buckets_seed <- dcast(
-    ddply(error_df, c("correct", "pred_buckets_seed"), summarize,
-          total_share=sum(loglossshare)),
-    pred_buckets_seed ~ correct, value.var="total_share"
-  )
-  
-  error_buckets_count_seed <- dcast(
-    ddply(error_df, c("correct", "pred_buckets_seed"), summarize,
-          total_share=length(loglossshare)),
-    pred_buckets_seed ~ correct, value.var="total_share"
-  )
-  
-  print("Error buckets")
-  print(error_buckets)
-  print("Error buckets count")
-  print(error_buckets_count)
-  
-  print("Error buckets - seed")
-  print(error_buckets_seed)
-  print("Error buckets count - seed")
-  print(error_buckets_count_seed)
-  
-  browser()
   #
   #   #Write files
   #
+
   browser()
 
   write.csv(preds_all_gbm,
@@ -352,6 +363,11 @@ algo_preds <- function(){
   write.csv(matrix_output, paste0(FileDir, "/submissions/predict_matrix_winner_top", Sys.Date(), ".csv"))
 }
 
+###############################################################################
+#
+# create_features()-
+#
+###############################################################################
 
 create_features <- function(response, ratings_df, seeds, yearly_statistics){
   
@@ -435,7 +451,11 @@ create_features <- function(response, ratings_df, seeds, yearly_statistics){
   return(list(prediction_df=prediction_df, ratings_spread=cbind(response_df, ratings_spread)))
 }
 
-
+###############################################################################
+#
+# loglossprob_summary()-
+#
+###############################################################################
 loglossprob_summary <- function(data, lev = NULL, model = NULL){
   y <- data$obs
   yhat <- data$pred
@@ -448,6 +468,11 @@ loglossprob_summary <- function(data, lev = NULL, model = NULL){
   return(out)
 }
 
+###############################################################################
+#
+# logloss_share()-
+#
+###############################################################################
 
 logloss_share <- function(data){
   y <- data$obs
@@ -461,22 +486,41 @@ logloss_share <- function(data){
   return(data)
 }
 
+###############################################################################
+#
+# rank_to_rating()-
+#
+###############################################################################
 
 rank_to_rating <- function(rank){
   return(100 - 4 * log(rank+1) - rank /22)
 }
 
+###############################################################################
+#
+# rating_spread_to_win_pct()-
+#
+###############################################################################
 
 rating_spread_to_win_pct <- function(rating_spread){
   return(1 / (1 + exp(-rating_spread / 14.5)))
 }
 
+###############################################################################
+#
+# seeds_to_win_pct()-
+#
+###############################################################################
 
 seeds_to_win_pct <- function(high, low){
   return(0.50 + 0.0333 * (high - low))
 }
 
-
+###############################################################################
+#
+# manipulate_preds()-
+#
+###############################################################################
 
 manipulate_preds <- function(){
   
@@ -524,6 +568,11 @@ manipulate_preds <- function(){
             row.names=FALSE)
 }
 
+###############################################################################
+#
+# cleanStatisticsData()-
+#
+###############################################################################
 
 cleanStatisticsData <- function(){
   
